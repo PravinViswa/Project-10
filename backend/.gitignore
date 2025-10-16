@@ -6,5 +6,4 @@
 /.rust-analyzer/
 /target
 .shuttle*
-Secrets*.toml
 Shuttle*.toml

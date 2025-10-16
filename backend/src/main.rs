@@ -31,7 +31,7 @@ fn app_config(cfg:&mut web::ServiceConfig){
 }
 
 //Shuttle's main macro
-#[shuttle_runtime::main]
+#[shuttle_runtime::main(instance_size = "s")]
 async fn actix_web(
     #[shuttle_runtime::Secrets] secrets:SecretStore,
 )->ShuttleActixWeb<impl FnOnce(&mut web::ServiceConfig)+Send+Clone+'static>{
@@ -46,7 +46,7 @@ async fn actix_web(
     std::env::set_var("AWS_ACCESS_KEY_ID",aws_access_key_id);
     std::env::set_var("AWS_SECRET_ACCESS_KEY",aws_secret_access_key);
     
-    env_logger::init_from_env(env_logger::Env::new().default_filter_or("info"));
+    //env_logger::init_from_env(env_logger::Env::new().default_filter_or("info"));
 
     let shared_config=aws_config::load_defaults(aws_config::BehaviorVersion::latest()).await;
     let db_client=aws_sdk_dynamodb::Client::new(&shared_config);
