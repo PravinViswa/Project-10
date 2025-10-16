@@ -14,7 +14,12 @@ use shuttle_runtime::SecretStore;
 use std::sync::{Arc,Mutex};
 
 fn app_config(cfg:&mut web::ServiceConfig){
-    let cors = Cors::permissive();                       
+    let cors = Cors::default()
+        .allowed_origin("https://pravinviswa.github.io")
+        .allowed_origin("http://localhost:3000")
+        .allow_any_method()
+        .allow_any_header()
+        .max_age(3600);                             
 
     cfg.service(
         web::scope("")
