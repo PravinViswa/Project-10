@@ -1,4 +1,4 @@
-const API_BASE=process.env.REACT_APP_API_BASE||"http://localhost:8080";
+const API_BASE=process.env.REACT_APP_API_BASE||"https://2048game-a1uk.shuttle.app";
 
 export async function createPlayer(playerId,passcode){
   const res=await fetch(`${API_BASE}/player/create`,{
