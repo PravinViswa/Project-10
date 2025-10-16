@@ -15,8 +15,7 @@ use std::sync::{Arc,Mutex};
 
 fn app_config(cfg:&mut web::ServiceConfig){
     let cors=Cors::default()
-        .allowed_origin("https://PravinViswa.github.io")
-        .allowed_origin("http://localhost:3000")
+        .allow_any_origin()
         .allow_any_header()
         .max_age(3600);                                      
 
