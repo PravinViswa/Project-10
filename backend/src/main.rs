@@ -15,10 +15,10 @@ use std::sync::{Arc,Mutex};
 
 fn app_config(cfg:&mut web::ServiceConfig){
     let cors=Cors::default()
-        .allow_any_origin()
-        .allow_any_method()
+        .allowed_origin("https://PravinViswa.github.io")
+        .allowed_origin("http://localhost:3000")
         .allow_any_header()
-        .max_age(3600);
+        .max_age(3600);                                      
 
     cfg.service(
         web::scope("")
