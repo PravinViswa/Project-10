@@ -5,7 +5,7 @@ mod services;
 mod utils;
 
 use actix_cors::Cors;
-use actix_web::{middleware::Logger,web,App,HttpServer};
+use actix_web::{http::header, middleware::Logger, web, App, HttpServer};
 use api::{game, player};
 use aws_config;
 use services::storage::DynamoDbClient;
@@ -14,10 +14,7 @@ use shuttle_runtime::SecretStore;
 use std::sync::{Arc,Mutex};
 
 fn app_config(cfg:&mut web::ServiceConfig){
-    let cors=Cors::default()
-        .allow_any_origin()
-        .allow_any_header()
-        .max_age(3600);                                      
+    let cors = Cors::permissive();                       
 
     cfg.service(
         web::scope("")
