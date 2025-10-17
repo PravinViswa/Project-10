@@ -12,7 +12,8 @@ export async function createPlayer(playerId,passcode){
   const res=await fetch(`${API_BASE}/player/create`,{
     method:"POST",
     headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({player_id:playerId,passcode,grid_width:4,grid_height:4})
+    body:JSON.stringify({player_id:playerId,passcode,grid_width:4,grid_height:4}),
+    credentials:"include"
   });
   if(!res.ok){
     const errorBody=await res.text();
@@ -25,7 +26,8 @@ export async function startGame(playerId,passcode){
   const res=await fetch(`${API_BASE}/game/start`,{
     method:"POST",
     headers:{"Content-Type":"application/json" },
-    body:JSON.stringify({player_id:playerId,passcode})
+    body:JSON.stringify({player_id:playerId,passcode}),
+    credentials:"include"
   });
   if(!res.ok){
      const errorBody=await res.text();
@@ -38,7 +40,8 @@ export async function restartGame(playerId,passcode,gridWidth,gridHeight) {
   const res=await fetch(`${API_BASE}/game/restart`, {
     method:"POST",
     headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({player_id:playerId,passcode,grid_width:gridWidth,grid_height:gridHeight})
+    body:JSON.stringify({player_id:playerId,passcode,grid_width:gridWidth,grid_height:gridHeight}),
+    credentials:"include"
   });
   if(!res.ok) throw new Error(`Failed to restart game: ${res.statusText}`);
   return res.json();
@@ -48,7 +51,8 @@ async function sendMove(direction, playerId, passcode){
   const res=await fetch(`${API_BASE}/game/move-${direction}`,{ 
     method:"POST",
     headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({player_id: playerId,passcode}) 
+    body:JSON.stringify({player_id: playerId,passcode}),
+    credentials:"include"
   });
   if (!res.ok) throw new Error(`Failed to move ${direction}:${res.statusText}`);
   return res.json();

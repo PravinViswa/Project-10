@@ -13,14 +13,18 @@ use services::storage::DynamoDbClient;
 use shuttle_actix_web::ShuttleActixWeb;
 use shuttle_runtime::SecretStore;
 use aws_types::region::Region;
-
+use actix_web::http;
 fn app_config(cfg:&mut web::ServiceConfig){
     let cors = Cors::default()
         .allowed_origin("https://pravinviswa.github.io")
         .allowed_origin("http://localhost:3000")
         .allowed_methods(vec!["GET","POST","OPTIONS"])
-        .allow_any_header()
-        .expose_any_header()
+        .allowed_headers(vec![
+            http::header::AUTHORIZATION,
+            http::header::ACCEPT,
+            http::header::CONTENT_TYPE,
+        ])
+        .expose_headers(vec!["Content-Disposition"])
         .supports_credentials()
         .max_age(3600);
     cfg.service(
