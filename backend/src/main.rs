@@ -21,6 +21,7 @@ fn app_config(cfg:&mut web::ServiceConfig){
         .allowed_origin("http://localhost:3000")
         .allowed_methods(vec!["GET","POST","OPTIONS"])
         .allow_any_header()
+        .expose_any_header()
         .supports_credentials()
         .max_age(3600);
     cfg.service(
