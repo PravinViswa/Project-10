@@ -792,6 +792,7 @@ dependencies = [
  "actix-cors",
  "actix-web",
  "aws-config",
+ "aws-credential-types",
  "aws-sdk-dynamodb",
  "aws-types",
  "dotenv",

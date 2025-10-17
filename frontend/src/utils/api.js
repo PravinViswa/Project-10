@@ -1,5 +1,13 @@
-const API_BASE=process.env.REACT_APP_API_BASE||"https://2048game-a1uk.shuttle.app";
+let API_BASE='http://localhost:8080';
 
+if(process.env.REACT_APP_API_BASE?.trim()){
+  const envBase=process.env.REACT_APP_API_BASE.trim();
+  if (envBase.includes('backend')&&window.location.hostname!=='backend'){
+    API_BASE='http://host.docker.internal:8080';
+  }else{
+    API_BASE=envBase;
+  }
+}
 export async function createPlayer(playerId,passcode){
   const res=await fetch(`${API_BASE}/player/create`,{
     method:"POST",
