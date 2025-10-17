@@ -13,7 +13,6 @@ use services::storage::DynamoDbClient;
 use shuttle_actix_web::ShuttleActixWeb;
 use shuttle_runtime::SecretStore;
 use aws_types::region::Region;
-use actix_web::http::header;
 
 fn app_config(cfg:&mut web::ServiceConfig){
     let cors = Cors::default()
