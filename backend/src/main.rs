@@ -20,11 +20,7 @@ fn app_config(cfg:&mut web::ServiceConfig){
         .allowed_origin("https://pravinviswa.github.io")
         .allowed_origin("http://localhost:3000")
         .allowed_methods(vec!["GET","POST","OPTIONS"])
-        .allowed_headers(vec![
-            header::CONTENT_TYPE,
-            header::ACCEPT,
-            header::AUTHORIZATION,
-        ])
+        .allow_any_header()
         .supports_credentials()
         .max_age(3600);
     cfg.service(
