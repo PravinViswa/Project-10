@@ -3,7 +3,7 @@ let API_BASE='http://localhost:8080';
 if(process.env.REACT_APP_API_BASE?.trim()){
   const envBase=process.env.REACT_APP_API_BASE.trim();
   if (envBase.includes('backend')&&window.location.hostname!=='backend'){
-    API_BASE='http://host.docker.internal:8080';
+    API_BASE='https://backend-gnxf.shuttle.app';
   }else{
     API_BASE=envBase;
   }
