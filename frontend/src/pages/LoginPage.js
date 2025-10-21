@@ -54,7 +54,7 @@ function LoginPage({setPlayer,setView}){
         />
         {error&&<p className="error-message">{error}</p>}
         <button onClick={handleLogin} className="auth-button" disabled={isLoading}>
-          {isLoading?'Logging in...':'Login & Play'}
+          {isLoading?'Logging in...':'Play'}
         </button>
         <button onClick={()=>setView('register')} className="auth-link-button" disabled={isLoading}>
           Create New Player
